@@ -1,14 +1,14 @@
+{% extends 'reviews/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Your Review</title>
+{% block title %}
+    Your Review
+{% endblock %}
+
     <link rel="stylesheet" href="{% static 'reviews/styles.css' %}">
-</head>
-<body>
-    <form action="/" method="post" novalidate>
+
+{% block content %}
+    <form action="/" method="post">
         {% csrf_token %}
         {% for field in form %}
         <div class="form-control {% if field.errors %}errors{% endif %}">
@@ -19,5 +19,4 @@
         {% endfor %}
         <button type="submit">Send</button>
     </form>
-</body>
-</html>
+{% endblock %}
